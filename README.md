@@ -1,7 +1,51 @@
 # GpsUtils
 Small ruby library for working with GPS coordinates.
 
-# Usage
+## Contents
+- [Installation](#installation)
+  - [Using Bundler](#using-bundler)
+  - [Using locally build gem-file](#using-locally-build-gem-file)
+- [Usage](#usage)
+- [License](#license)
+
+## Installation
+
+You can install the package using either Bundler or a locally generated gem-file.
+
+### Using Bundler
+
+Edit you Gemfile and add the following line:
+```ruby
+gem 'gpsutils', :git => 'https://github.com/megamoose/gpsutils.git'
+```
+
+Then run:
+```bash
+$ bundle install
+```
+
+### Using locally build gem-file
+
+Clone the repository from github:
+
+```bash
+$ git clone https://github.com/megamoose/gpsutils.git gpsutils
+$ cd gpsutils
+```
+
+Build the gem-file:
+
+```bash
+$ gem build gpsutils.gemspec
+```
+
+Install the gem-file:
+
+```bash
+$ gem install gpsutils-*.gem
+```
+
+## Usage
 
 Determine whether or not a given location (point) is within an area (bounding box):
 
@@ -22,3 +66,6 @@ area = GpsUtils::BoundingBox.new(nw, se)
 
 area.cover? location
 ```
+
+## License
+This code is free to use under the terms of the [MIT license](LICENSE).
