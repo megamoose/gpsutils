@@ -40,6 +40,8 @@ module GpsUtils
 		end
 
 		def cover?(point)
+			return false if @nw.lat == @se.lat and @nw.lng == @se.lng
+
 			p = [point.lat - @nw.lat, point.lng - @se.lng]
 
 			p21x = p[0] * @p21

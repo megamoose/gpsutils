@@ -260,6 +260,28 @@ describe "GpsUtils" do
 				end
 			end
 
+			context "given box where nw corner == se corner" do
+
+				before :all do
+					@nw = GpsUtils::Point.new(56.137947, -8.251422)
+					@se = GpsUtils::Point.new(56.137947, -8.251422)
+					@box = GpsUtils::BoundingBox.new(@nw, @se)
+				end
+
+				it "any point should be outside" do
+					p = GpsUtils::Point.new(56.137947, -8.251422)
+					expect(@box.cover? p).to be false
+
+					p = GpsUtils::Point.new(56.60, -9.20)
+					expect(@box.cover? p).to be false
+
+					expect(@box.cover? @nw).to be false
+
+					expect(@box.cover? @se).to be false
+				end
+
+			end
+
 		end
 
 	end
