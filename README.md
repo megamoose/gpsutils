@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/megamoose/gpsutils.svg?branch=master)](https://travis-ci.org/megamoose/gpsutils)
 [![Code Climate](https://codeclimate.com/github/megamoose/gpsutils/badges/gpa.svg)](https://codeclimate.com/github/megamoose/gpsutils)
+[![Test Coverage](https://codeclimate.com/github/megamoose/gpsutils/badges/coverage.svg)](https://codeclimate.com/github/megamoose/gpsutils/coverage)
 
 Small ruby library for working with GPS coordinates.
 
