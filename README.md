@@ -1,4 +1,7 @@
 # GpsUtils
+
+[![Build Status](https://travis-ci.org/megamoose/gpsutils.svg?branch=master)](https://travis-ci.org/megamoose/gpsutils)
+
 Small ruby library for working with GPS coordinates.
 
 ## Contents
