@@ -8,16 +8,29 @@ Small ruby library for working with GPS coordinates.
 
 ## Contents
 - [Installation](#installation)
-  - [Using Bundler](#using-bundler)
+  - [Using Bundler with rubygems](#using-bundler-with-rubygems)
+  - [Using Bundler with github](#using-bundler-with-github)
   - [Using locally build gem-file](#using-locally-build-gem-file)
 - [Usage](#usage)
 - [License](#license)
 
 ## Installation
 
-You can install the package using either Bundler or a locally generated gem-file.
+You can install the package from rubygems or github using Bundler or create your own package from the source code.
 
-### Using Bundler
+### Using Bundler with rubygems
+
+Edit you Gemfile and add the following line:
+```ruby
+gem 'gpsutils'
+```
+
+Then run:
+```bash
+$ bundle install
+```
+
+### Using Bundler with github
 
 Edit you Gemfile and add the following line:
 ```ruby
@@ -55,8 +68,8 @@ $ gem install gpsutils-*.gem
 Determine whether or not a given location (point) is within an area (bounding box):
 
 ```ruby
-# No gem, install library manually by copying files into wanted directory.
-require_relative 'gpsutils/lib/gpsutils'
+# Follow instructions in the installation section.
+require 'gpsutils'
 
 # Latitude, Longitude.
 location = GpsUtils::Point.new(-22.955776, -43.536438)
