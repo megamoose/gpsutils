@@ -36,6 +36,90 @@ describe "GpsUtils" do
 
 			end
 
+			context "that are float and integer, respectively" do
+
+				it "create object" do
+					expect { GpsUtils::Point.new(1.2, 3) }.to_not raise_error
+
+					x = GpsUtils::Point.new(1.2, 3)
+					expect(x.lat).to eq 1.2
+					expect(x.lng).to eq 3
+				end
+
+			end
+
+			context "that are integer and float, respectively" do
+
+				it "create object" do
+					expect { GpsUtils::Point.new(1, 3.4) }.to_not raise_error
+
+					x = GpsUtils::Point.new(1, 3.4)
+					expect(x.lat).to eq 1
+					expect(x.lng).to eq 3.4
+				end
+
+			end
+
+			context "that are float and string, respectively" do
+
+				it "raise exception" do
+					expect { GpsUtils::Point.new(1.2, '3.4') }.to raise_error(ArgumentError)
+				end
+
+			end
+
+			context "that are integer and string, respectively" do
+
+				it "raise exception" do
+					expect { GpsUtils::Point.new(1, '3.4') }.to raise_error(ArgumentError)
+				end
+
+			end
+
+			context "that are string and float, respectively" do
+
+				it "raise exception" do
+					expect { GpsUtils::Point.new('1.2', 3.4) }.to raise_error(ArgumentError)
+				end
+
+			end
+
+			context "that are string and integer, respectively" do
+
+				it "raise exception" do
+					expect { GpsUtils::Point.new('1.2', 3) }.to raise_error(ArgumentError)
+				end
+
+			end
+
+		end
+
+		context "given Point(1.2, 3.4)" do
+
+			it ".to_a should return [1.2, 3.4]" do
+				x = GpsUtils::Point.new(1.2, 3.4)
+				expect(x.to_a).to match_array([1.2, 3.4])
+			end
+
+			it ".to_s should return '1.2, 3.4'" do
+				x = GpsUtils::Point.new(1.2, 3.4)
+				expect(x.to_s).to eq("1.2,3.4")
+			end
+
+		end
+
+		context "given Point(1, 3)" do
+
+			it ".to_a should return [1, 3]" do
+				x = GpsUtils::Point.new(1, 3)
+				expect(x.to_a).to match_array([1, 3])
+			end
+
+			it ".to_s should return '1, 3'" do
+				x = GpsUtils::Point.new(1, 3)
+				expect(x.to_s).to eq("1,3")
+			end
+
 		end
 
 	end
