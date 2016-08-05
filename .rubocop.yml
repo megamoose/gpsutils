@@ -1,6 +1,3 @@
-AllCops:
-  DisabledByDefault: true
-
 #################### Lint ################################
 
 Lint/AmbiguousOperator:
