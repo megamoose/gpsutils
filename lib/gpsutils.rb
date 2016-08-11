@@ -1,4 +1,9 @@
 module GpsUtils
+	R = 6371e3
+
+	def self.to_radians(degrees)
+		degrees * Math::PI / 180
+	end
 
 	class Point
 		attr_accessor :lat, :lng
@@ -23,6 +28,29 @@ module GpsUtils
 		def to_s
 			"#{@lat},#{@lng}"
 		end
+
+		# Measure the distance between this point and another.
+		#
+		# Distance is calculated using equirectangular projection.
+		# @see https://en.wikipedia.org/wiki/Equirectangular_projection
+		#
+		# @param other [Point]
+		# @return [Float]
+		# @raise [ArgumentError] if other is not a Point
+		def distance(other)
+			unless other.is_a? Point
+				raise ArgumentError.new 'other must be a Point.'
+			end
+
+			dlng = GpsUtils::to_radians(other.lng - @lng)
+			dlat = GpsUtils::to_radians(other.lat - @lat)
+
+			x = dlng * Math.cos(dlat / 2)
+			y = GpsUtils::to_radians(other.lat - @lat)
+
+			Math.sqrt(x**2 + y**2) * GpsUtils::R
+		end
+
 	end
 
 	class BoundingBox

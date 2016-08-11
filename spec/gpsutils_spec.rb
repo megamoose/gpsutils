@@ -122,6 +122,43 @@ describe "GpsUtils" do
 
 		end
 
+		context "given p1 = Point(1, 3)" do
+			before :all do
+				@p1 = GpsUtils::Point.new(1, 3)
+			end
+
+			context "and p2 = Point(2, 3)" do
+				before :all do
+					@p2 = GpsUtils::Point.new(2, 3)
+				end
+
+				it "then p1.distance p2 must be around 111195" do
+					expect(@p1.distance(@p2)).to be_within(0.01).of(111194.92)
+				end
+
+			end
+
+			context "and p2 = Point(-2, -3)" do
+				before :all do
+					@p2 = GpsUtils::Point.new(-2, -3)
+				end
+
+				it "then p1.distance p2 must be around 745714" do
+					expect(@p1.distance(@p2)).to be_within(0.01).of(745713.76)
+				end
+			end
+
+			context "and p2 is not a Point" do
+				it "then p1.distance p2 must raise exception" do
+					expect { @p1.distance(-3.2) }.to raise_error(ArgumentError)
+					expect { @p1.distance(3) }.to raise_error(ArgumentError)
+					expect { @p1.distance('3') }.to raise_error(ArgumentError)
+					expect { @p1.distance(nil) }.to raise_error(ArgumentError)
+				end
+			end
+
+		end
+
 	end
 
 	context "BoundingBox" do
