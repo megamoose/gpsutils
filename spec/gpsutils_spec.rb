@@ -101,7 +101,7 @@ describe "GpsUtils" do
 				expect(x.to_a).to match_array([1.2, 3.4])
 			end
 
-			it ".to_s should return '1.2, 3.4'" do
+			it ".to_s should return '1.2,3.4'" do
 				x = GpsUtils::Point.new(1.2, 3.4)
 				expect(x.to_s).to eq("1.2,3.4")
 			end
@@ -115,7 +115,7 @@ describe "GpsUtils" do
 				expect(x.to_a).to match_array([1, 3])
 			end
 
-			it ".to_s should return '1, 3'" do
+			it ".to_s should return '1,3'" do
 				x = GpsUtils::Point.new(1, 3)
 				expect(x.to_s).to eq("1,3")
 			end
