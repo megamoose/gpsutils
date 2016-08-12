@@ -21,11 +21,13 @@ You can install the package from rubygems or github using Bundler or create your
 ### Using Bundler with rubygems
 
 Edit you Gemfile and add the following line:
+
 ```ruby
 gem 'gpsutils'
 ```
 
 Then run:
+
 ```bash
 $ bundle install
 ```
@@ -33,11 +35,13 @@ $ bundle install
 ### Using Bundler with github
 
 Edit you Gemfile and add the following line:
+
 ```ruby
 gem 'gpsutils', :git => 'https://github.com/megamoose/gpsutils.git'
 ```
 
 Then run:
+
 ```bash
 $ bundle install
 ```

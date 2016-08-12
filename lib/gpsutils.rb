@@ -1,9 +1,18 @@
 module GpsUtils
 
 	class Point
+		# @!attribute [r] lat
+		#	@return [Float, Integer] Latitude
 		attr_reader :lat
+
+		# @!attribute [r] lng
+		#	@return [Float, Integer] Longitude
 		attr_reader :lng
 
+		# Initialize Point.
+		#
+		# @param lat [Integer, Float] Latitude
+		# @param lng [Integer, Float] Langitude
 		def initialize(lat, lng)
 			unless lat.is_a? Float or lat.is_a? Integer
 				raise ArgumentError.new 'lat must be float or integer.'
@@ -17,6 +26,8 @@ module GpsUtils
 			@lng = lng
 		end
 
+		# @return [Array] Array with latitude and longitude as Float or Integer
+		#   values, as used when object was initialized
 		def to_a
 			[@lat, @lng]
 		end
@@ -27,9 +38,18 @@ module GpsUtils
 	end
 
 	class BoundingBox
-		attr_reader :se
+		# @!attribute [r] nw
+		#	@return [Point] North-West corner
 		attr_reader :nw
 
+		# @!attribute [r] nw
+		#	@return [Point] South-East corner
+		attr_reader :se
+
+		# Initialize BoundingBox.
+		#
+		# @param nw_point [Point] North-West corner
+		# @param se_point [Point] South-East corner
 		def initialize(nw_point, se_point)
 			unless nw_point.is_a? Point
 				raise ArgumentError.new 'nw_point must be a Point.'
@@ -49,6 +69,9 @@ module GpsUtils
 			@p41ms = @p41 ** 2
 		end
 
+		# Determine whether point is inside bounding box.
+		#
+		# @param point [Point]
 		def cover?(point)
 			p = [point.lat - @nw.lat, point.lng - @se.lng]
 
