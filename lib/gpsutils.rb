@@ -1,7 +1,8 @@
 module GpsUtils
 
 	class Point
-		attr_accessor :lat, :lng
+		attr_reader :lat
+		attr_reader :lng
 
 		def initialize(lat, lng)
 			unless lat.is_a? Float or lat.is_a? Integer
@@ -26,7 +27,8 @@ module GpsUtils
 	end
 
 	class BoundingBox
-		attr_accessor :se, :nw
+		attr_reader :se
+		attr_reader :nw
 
 		def initialize(nw_point, se_point)
 			unless nw_point.is_a? Point
