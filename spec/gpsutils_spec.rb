@@ -126,6 +126,42 @@ describe "GpsUtils" do
 
 	context "BoundingBox" do
 
+		context "initialized with two valid Points arguments" do
+			it "must succeed" do
+				@n_nw = GpsUtils::Point.new(-56.137947, 8.251422)
+				@n_se = GpsUtils::Point.new(-56.503488, 9.075396)
+				GpsUtils::BoundingBox.new(@n_nw, @n_se)
+			end
+		end
+
+		context "initialized with valid North-West Point argument" do
+			it "must raise exception" do
+				@n_nw = GpsUtils::Point.new(-56.137947, 8.251422)
+				@n_se = 8
+
+				expect { GpsUtils::BoundingBox.new(@n_nw, @n_se) }.to raise_error(ArgumentError)
+			end
+		end
+
+		context "initialized with valid South-East argument" do
+			it "must raise exception" do
+				@n_nw = 8
+				@n_se = GpsUtils::Point.new(-56.503488, 9.075396)
+
+				expect { GpsUtils::BoundingBox.new(@n_nw, @n_se) }.to raise_error(ArgumentError)
+			end
+		end
+
+		context "initialized with no valid argument" do
+			it "must raise exception" do
+				@n_nw = 8
+				@n_se = 8
+
+				expect { GpsUtils::BoundingBox.new(@n_nw, @n_se) }.to raise_error(ArgumentError)
+			end
+		end
+
+
 		context "cover" do
 
 			context "given box((-56.18, 8.25), (-56.50, 9.07))" do

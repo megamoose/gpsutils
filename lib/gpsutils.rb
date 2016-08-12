@@ -29,6 +29,14 @@ module GpsUtils
 		attr_accessor :se, :nw
 
 		def initialize(nw_point, se_point)
+			unless nw_point.is_a? Point
+				raise ArgumentError.new 'nw_point must be a Point.'
+			end
+
+			unless se_point.is_a? Point
+				raise ArgumentError.new 'se_point must be a Point.'
+			end
+
 			@nw = nw_point
 			@se = se_point
 
