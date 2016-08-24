@@ -89,5 +89,23 @@ area = GpsUtils::BoundingBox.new(nw, se)
 area.cover? location
 ```
 
+Sort positions (Points) by distance to location (Point):
+
+```ruby
+# Follow instructions in the installation section.
+require 'gpsutils'
+
+# Latitude, Longitude.
+location = GpsUtils::Point.new(-22.955776, -43.536438)
+
+positions = []
+positions.push(GpsUtils::Point.new(-23.560112, -46.642043))
+positions.push(GpsUtils::Point.new(-12.994417, -38.508040))
+
+positions.sort_by! do |position|
+	location.distance(position)
+end
+```
+
 ## License
 This code is free to use under the terms of the [MIT license](LICENSE).
